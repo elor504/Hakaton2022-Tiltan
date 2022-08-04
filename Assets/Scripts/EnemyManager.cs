@@ -28,29 +28,33 @@ public class EnemyManager : MonoBehaviour
 	{
 		if (EnemyPool.Count == 0)
 		{
-			EnemyController newEnemy = Instantiate(EnemyPF, GetRandomPortal().position, Quaternion.identity, parent);
-			newEnemy.Init();
+			Vector2 portalPos = GetRandomPortal().position;
+			EnemyController newEnemy = Instantiate(EnemyPF, portalPos, Quaternion.identity, parent);
+			newEnemy.Init(portalPos);
 			EnemyPool.Add(newEnemy);
 		}
 		else
 		{
+		Vector2 portalPos = GetRandomPortal().position;
 			for (int i = 0; i < EnemyPool.Count; i++)
 			{
 				if (!EnemyPool[i].IsActive)
 				{
-					EnemyPool[i].transform.position = GetRandomPortal().position;
-					EnemyPool[i].Init();
+
+					EnemyPool[i].transform.position = portalPos;
+					EnemyPool[i].Init(portalPos);
 					EnemyPool[i].gameObject.SetActive(true);
 					return;
 				}
 			}
 
-			EnemyController newEnemy = Instantiate(EnemyPF, GetRandomPortal().position, Quaternion.identity, parent);
-			newEnemy.Init();
+
+			EnemyController newEnemy = Instantiate(EnemyPF, portalPos, Quaternion.identity, parent);
+			newEnemy.Init(portalPos);
 			EnemyPool.Add(newEnemy);
 		}
 	}
 
 
-
+	
 }
