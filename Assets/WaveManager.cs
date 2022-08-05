@@ -9,11 +9,11 @@ public class WaveManager : MonoBehaviour
 	public List<WaveInfo> waveInfo;
 	public int currentWave;
 
-
 	void Awake()
 	{
 		StartCoroutine(StartWave());
 	}
+
 	IEnumerator StartWave()
 	{
 		yield return new WaitForSeconds(1f);
@@ -36,9 +36,6 @@ public class WaveManager : MonoBehaviour
 		}
 
 	}
-
-
-
 }
 [Serializable]
 public class WaveInfo

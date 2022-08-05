@@ -16,8 +16,8 @@ public class EnemyController : MonoBehaviour
 	Vector2 dir;
 
 	public bool IsActive;
-	Vector2 _portalPos;
-	public Vector2 GetPortalPos => _portalPos;
+	Portal _portalPos;
+	public Vector2 GetPortalPos => _portalPos.transform.position;
 
 	public List<PushPos> HeroPos = new List<PushPos>();
 
@@ -37,9 +37,10 @@ public class EnemyController : MonoBehaviour
 		_rb = GetComponent<Rigidbody2D>();
 	}
 
-	public void Init(Vector2 portalPos)
+	public void Init(Portal portalPos)
 	{
 		_portalPos = portalPos;
+		_portalPos.ActivateSpawnVFX();
 		IsActive = true;
 		for (int i = 0; i < HeroPos.Count; i++)
 		{
@@ -59,7 +60,7 @@ public class EnemyController : MonoBehaviour
 	}
 	public void GoTowardPortal()
 	{
-		dir = (_portalPos - (Vector2)this.transform.position).normalized;
+		dir = ((Vector2)_portalPos.transform.position - (Vector2)this.transform.position).normalized;
 		float percentage = Map(GetCurrentResistance(), 0, _resistanceTolerance, 0, 1);
 
 		float speed = _movementSpeed - (_movementSpeed / percentage);
@@ -70,6 +71,8 @@ public class EnemyController : MonoBehaviour
 	public void DeactivateEnemy()
 	{
 		IsActive = false;
+		_portalPos.ActivateDespawnVFX();
+
 		this.gameObject.SetActive(false);
 		for (int i = 0; i < HeroPos.Count; i++)
 		{

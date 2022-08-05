@@ -7,7 +7,7 @@ public class EnemyManager : MonoBehaviour
 	public static EnemyManager GetInstance => _instance;
 
 
-	public List<Transform> Portals = new List<Transform>();
+	public List<Portal> Portals = new List<Portal>();
 	public Transform parent;
 	public Transform EndTrans;
 	[Header("Pool")]
@@ -21,9 +21,7 @@ public class EnemyManager : MonoBehaviour
 		if (_instance == null)
 			_instance = this;
 		else if(_instance != this)
-		{
 			Destroy(this.gameObject);
-		}
 	}
 
 	void Update()
@@ -36,8 +34,7 @@ public class EnemyManager : MonoBehaviour
 		}
 	}
 
-
-	Transform GetRandomPortal()
+	Portal GetRandomPortal()
 	{
 		int randomIndex = Random.Range(0, Portals.Count);
 		return Portals[randomIndex];
@@ -46,19 +43,19 @@ public class EnemyManager : MonoBehaviour
 	{
 		if (EnemyPool.Count == 0)
 		{
-			Vector2 portalPos = GetRandomPortal().position;
-			EnemyController newEnemy = Instantiate(PF, portalPos, Quaternion.identity, parent);
+			Portal portalPos = GetRandomPortal();
+			EnemyController newEnemy = Instantiate(PF, portalPos.transform.position, Quaternion.identity, parent);
 			newEnemy.Init(portalPos);
 			EnemyPool.Add(newEnemy);
 		}
 		else
 		{
-			Vector2 portalPos = GetRandomPortal().position;
+			Portal portalPos = GetRandomPortal();
 			for (int i = 0; i < EnemyPool.Count; i++)
 			{
 				if (!EnemyPool[i].IsActive && EnemyPool[i].ID == PF.ID)
 				{
-					EnemyPool[i].transform.position = portalPos;
+					EnemyPool[i].transform.position = portalPos.transform.position;
 					EnemyPool[i].Init(portalPos);
 					EnemyPool[i].gameObject.SetActive(true);
 					return;
@@ -66,12 +63,11 @@ public class EnemyManager : MonoBehaviour
 			}
 
 
-			EnemyController newEnemy = Instantiate(PF, portalPos, Quaternion.identity, parent);
+			EnemyController newEnemy = Instantiate(PF, portalPos.transform.position, Quaternion.identity, parent);
 			newEnemy.Init(portalPos);
 			EnemyPool.Add(newEnemy);
 		}
 	}
-
 	public EnemyController GetClosestToEndEnemy()
 	{
 		float distance = float.MaxValue;
@@ -96,7 +92,6 @@ public class EnemyManager : MonoBehaviour
 		}
 		return closestEnemy;
 	}
-
 	public int GetAmountOfEnemiesAlive()
 	{
 		int amount = 0;

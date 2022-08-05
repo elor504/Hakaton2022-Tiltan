@@ -12,6 +12,9 @@ public class HeroManager : MonoBehaviour
 	public Transform endTrans;
 
 	public Transform landPos;
+
+	public ParticleSystem SpawnVfx;
+
 	private void Awake()
 	{
 		if (_instance == null)
@@ -66,6 +69,7 @@ public class HeroManager : MonoBehaviour
 	{
 		if (HeroPool.Count == 0)
 		{
+			SpawnVfx.Play();
 			HeroController newHero = Instantiate(heroPF, endTrans.position, Quaternion.identity, parent);
 			newHero.InitHero(endTrans.position);
 			HeroPool.Add(newHero);
@@ -76,10 +80,12 @@ public class HeroManager : MonoBehaviour
 			{
 				if (!HeroPool[i].IsActive)
 				{
+					SpawnVfx.Play();
 					HeroPool[i].InitHero(endTrans.position);
 					return;
 				}
 			}
+			SpawnVfx.Play();
 			HeroController newHero = Instantiate(heroPF, endTrans.position, Quaternion.identity, parent);
 			newHero.InitHero(endTrans.position);
 			HeroPool.Add(newHero);

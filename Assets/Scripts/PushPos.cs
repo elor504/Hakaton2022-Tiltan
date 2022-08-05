@@ -12,6 +12,9 @@ public class PushPos : MonoBehaviour
 
 	public float GetResistanceFromHero => Hero? Hero.Resistance : 0;
 
+	public float Rotation;
+
+
 	private void Awake()
 	{
 		_controller = transform.GetComponentInParent<EnemyController>();
@@ -25,6 +28,7 @@ public class PushPos : MonoBehaviour
 	{
 		this.Hero = hero;
 		IsTakenByHero = true;
+		hero.transform.rotation = Quaternion.Euler(0,0, Rotation);
 	}
 
 

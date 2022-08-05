@@ -44,18 +44,15 @@ public class HeroController : MonoBehaviour
 		}
 
 	}
-	//
 	public void ReleaseHero()
 	{
 		Brain.PushPos = null;
 	}
-
 	public void DisableHero()
 	{
 		IsActive = false;
 		this.gameObject.SetActive(false);
 	}
-
 	public bool IsHeroAttacking()
 	{
 		return Brain.IsHeroAttacking();
@@ -67,6 +64,4 @@ public class HeroController : MonoBehaviour
 		Gizmos.DrawWireSphere(this.transform.position, DetectionRadius);
 
 	}
-
-
 }

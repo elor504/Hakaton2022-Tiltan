@@ -43,8 +43,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6c8f25b5f036574095fb44eebaac4f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsBeingTargetedByHero: 0
   IsTakenByHero: 0
   Hero: {fileID: 0}
+  Rotation: -30.801
 --- !u!1 &5979988695398672374
 GameObject:
   m_ObjectHideFlags: 0
@@ -88,8 +90,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6c8f25b5f036574095fb44eebaac4f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsBeingTargetedByHero: 0
   IsTakenByHero: 0
   Hero: {fileID: 0}
+  Rotation: 0
 --- !u!1 &7532190969365553874
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,6 +227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba42dc28b0b1ce64c9e574ea24940abd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ID: 0
   _movementSpeed: 1
   _resistanceTolerance: 5
   CurrentTotalResistance: 0
@@ -354,5 +359,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6c8f25b5f036574095fb44eebaac4f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsBeingTargetedByHero: 0
   IsTakenByHero: 0
   Hero: {fileID: 0}
+  Rotation: 17.08
