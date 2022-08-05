@@ -60,7 +60,7 @@ public class HeroManager : MonoBehaviour
 		return closestHero;
 	}
 
-	void InstantiateHero()
+	public void InstantiateHero()
 	{
 		if (HeroPool.Count == 0)
 		{
