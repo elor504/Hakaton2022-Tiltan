@@ -34,6 +34,15 @@ public class EnemyController : MonoBehaviour
 		return currentResistance;
 	}
 
+	public float GetTotalResistancePercentage()
+	{
+		float per = 0;
+		per = Map(GetCurrentResistance(), 0, _resistanceTolerance, 0, 1);
+		return per;
+	}
+
+
+
 	private void Awake()
 	{
 		_rb = GetComponent<Rigidbody2D>();
@@ -67,7 +76,6 @@ public class EnemyController : MonoBehaviour
 
 		float speed = _movementSpeed - (_movementSpeed / percentage);
 		speed = Mathf.Clamp(speed, 0, _movementSpeed);
-		//Debug.Log("Percentage: " + percentage + " movementSpeed: " + speed);
 		_rb.position += (dir * speed) * Time.deltaTime;
 	}
 	public void DeactivateEnemy()

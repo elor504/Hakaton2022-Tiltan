@@ -73,6 +73,7 @@ public class EnemyManager : MonoBehaviour
 	{
 		float distance = float.MaxValue;
 		EnemyController closestEnemy = null;
+		List<EnemyController> canBeTargetedEnemies = new List<EnemyController>();
 		if (EnemyPool.Count != 0)
 		{
 			for (int i = 0; i < EnemyPool.Count; i++)
@@ -81,6 +82,7 @@ public class EnemyManager : MonoBehaviour
 				{
 					if (EnemyPool[i].CanBeTargeted())
 					{
+						canBeTargetedEnemies.Add(EnemyPool[i]);
 						if (Vector2.Distance(EnemyPool[i].transform.position, EndTrans.position) < distance)
 						{
 							distance = Vector2.Distance(EnemyPool[i].transform.position, EndTrans.position);
@@ -90,6 +92,17 @@ public class EnemyManager : MonoBehaviour
 
 				}
 			}
+
+			float totalResistance = float.MaxValue;
+			for (int i = 0; i < canBeTargetedEnemies.Count; i++)
+			{
+				if (canBeTargetedEnemies[i].GetTotalResistancePercentage() < totalResistance)
+				{
+					totalResistance = canBeTargetedEnemies[i].GetTotalResistancePercentage();
+					closestEnemy = canBeTargetedEnemies[i];
+				}
+			}
+
 		}
 		return closestEnemy;
 	}

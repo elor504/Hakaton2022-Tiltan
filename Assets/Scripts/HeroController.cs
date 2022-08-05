@@ -11,6 +11,7 @@ public class HeroController : MonoBehaviour
 	public Transform EnemyTrans;
 	public float MovementSpeed;
 	public float Resistance;
+	public int PointsOnPush;
 
 	float _movementSpeed()
 	{

@@ -140,6 +140,7 @@ MonoBehaviour:
   EnemyTrans: {fileID: 0}
   MovementSpeed: 1
   Resistance: 6
+  PointsOnPush: 5
   IsActive: 0
   respawn: 0
 --- !u!114 &5413101807516882910
