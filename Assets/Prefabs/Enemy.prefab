@@ -228,6 +228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 0
+  Points: 15
   _movementSpeed: 1
   _resistanceTolerance: 5
   CurrentTotalResistance: 0

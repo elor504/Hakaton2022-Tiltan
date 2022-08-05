@@ -10,7 +10,7 @@ public class PushPos : MonoBehaviour
 
 	private EnemyController _controller;
 
-	public float GetResistanceFromHero => Hero? Hero.Resistance : 0;
+	public float GetResistanceFromHero => Hero? Hero.GetResistance : 0;
 
 	public float Rotation;
 

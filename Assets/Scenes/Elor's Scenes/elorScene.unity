@@ -166,6 +166,7 @@ GameObject:
   - component: {fileID: 16788597}
   - component: {fileID: 16788596}
   - component: {fileID: 16788595}
+  - component: {fileID: 16788600}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -274,6 +275,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &16788600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 16788594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfb1107adefa62f4fad2053cce97f581, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: {fileID: 2101323150}
 --- !u!1 &23691190
 GameObject:
   m_ObjectHideFlags: 0
@@ -2366,6 +2380,7 @@ GameObject:
   - component: {fileID: 775243520}
   - component: {fileID: 775243519}
   - component: {fileID: 775243521}
+  - component: {fileID: 775243522}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2426,6 +2441,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tap: {fileID: 2008297881}
+  Points: 0
+  IsHeroesBoosted: 0
+  BoostTimer: 0.2
+  MovementPercentage: 0.1
+  ResistancePercentage: 0.1
 --- !u!114 &775243520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2461,13 +2481,34 @@ MonoBehaviour:
     enemiesPF:
     - {fileID: 7532190970169232849, guid: ae55f2b3379c428418df13860538848c, type: 3}
     maxAmountOfEnemiesAlive: 5
-    maxAmountOfHeroesAlive: 15
+    maxAmountOfHeroesAlive: 10
   - timeBetweenSpawn: 1
     enemiesPF:
     - {fileID: 7532190970169232849, guid: ae55f2b3379c428418df13860538848c, type: 3}
     maxAmountOfEnemiesAlive: 2
     maxAmountOfHeroesAlive: 6
   currentWave: 0
+--- !u!114 &775243522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 775243516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 547e89904c9cecf4dadd22c183068873, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ResistanceLevel: 1
+  MovementSpeedLevel: 1
+  AmountOfHeroesLevel: 1
+  ResistanceBaseCost: 100
+  MovementSpeedBaseCost: 150
+  ResistanceCostPer: 0.1
+  MovementSpeedCostPer: 0.2
+  ResistancePer: 0.1
+  MovementSpeedPer: 0.2
 --- !u!1 &806237655
 GameObject:
   m_ObjectHideFlags: 0
@@ -6102,8 +6143,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 58.57831, y: 1.9322205}
-  m_SizeDelta: {x: 232.94, y: 80.1359}
+  m_AnchoredPosition: {x: 55.916668, y: 1.9322205}
+  m_SizeDelta: {x: 246.248, y: 80.1359}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2101323150
 MonoBehaviour:
@@ -6152,8 +6193,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
-  m_fontSizeBase: 80
+  m_fontSize: 75.74
+  m_fontSizeBase: 75.74
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

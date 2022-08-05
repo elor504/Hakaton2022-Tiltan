@@ -138,7 +138,7 @@ MonoBehaviour:
   DetectionRadius: 2.22
   Brain: {fileID: 5413101807516882910}
   EnemyTrans: {fileID: 0}
-  movementSpeed: 1.1
+  MovementSpeed: 1
   Resistance: 6
   IsActive: 0
   respawn: 0

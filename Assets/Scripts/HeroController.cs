@@ -5,12 +5,31 @@ using UnityEngine;
 public class HeroController : MonoBehaviour
 {
 	public HeroAnimation heroAnimation;
-    public LayerMask EnemyMask;
-    public float DetectionRadius;
+	public LayerMask EnemyMask;
+	public float DetectionRadius;
 	public HeroBrain Brain;
-    public Transform EnemyTrans;
-	public float movementSpeed;
+	public Transform EnemyTrans;
+	public float MovementSpeed;
 	public float Resistance;
+
+	float _movementSpeed()
+	{
+		if (GameManager.GetInstance.IsHeroesBoosted)
+		{
+			return MovementSpeed + (MovementSpeed * GameManager.GetInstance.MovementPercentage);
+		}
+		return MovementSpeed;
+	}
+	public float GetMovementSpeed => _movementSpeed();
+	float _resistance()
+	{
+		if (GameManager.GetInstance.IsHeroesBoosted)
+		{
+			return Resistance + (Resistance * GameManager.GetInstance.ResistancePercentage);
+		}
+		return Resistance;
+	}
+	public float GetResistance => _resistance();
 
 	Vector2 dir;
 	Rigidbody2D _rb;
@@ -34,7 +53,7 @@ public class HeroController : MonoBehaviour
 	public void GoTowardPosition(Vector2 pos)
 	{
 		dir = (pos - (Vector2)this.transform.position).normalized;
-		_rb.position += (dir * movementSpeed) * Time.deltaTime;
+		_rb.position += (dir * GetMovementSpeed) * Time.deltaTime;
 
 		if (respawn)
 		{
