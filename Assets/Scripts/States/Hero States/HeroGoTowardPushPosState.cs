@@ -20,6 +20,7 @@ public class HeroGoTowardPushPosState : BaseState
 	public override void EnterState()
 	{
 		_animation.SetAnimatorBool(_animationName, true);
+		_controller.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
 	}
 
 	public override void UpdateState()

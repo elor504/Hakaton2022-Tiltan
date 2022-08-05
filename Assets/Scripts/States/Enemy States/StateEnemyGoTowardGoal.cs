@@ -24,7 +24,6 @@ public class StateEnemyGoTowardGoal : BaseState
 	public override void UpdateState()
 	{
 		//if current resistance is higher then resitance tolerance
-
 		if (_controller.CheckIfNeedToBePushedBack())
 		{
 			_brain.ChangeState(1);
