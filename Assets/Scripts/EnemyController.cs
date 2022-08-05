@@ -19,6 +19,10 @@ public class EnemyController : MonoBehaviour
 	public bool IsActive;
 	Vector2 _portalPos;
 	bool startGoBack;
+
+
+	public List<Transform> HeroPos = new List<Transform>();
+	public List<bool> IsPosTaken = new List<bool>();
 	private void Awake()
 	{
 		_rb = GetComponent<Rigidbody2D>();
@@ -64,6 +68,7 @@ public class EnemyController : MonoBehaviour
 			{
 				if (CurrentTotalResistance == 0)
 				{
+					//dir = (_path[0].position - this.transform.position).normalized;
 					_rb.position += (dir * _movementSpeed) * Time.deltaTime;
 				}
 				else
@@ -72,11 +77,13 @@ public class EnemyController : MonoBehaviour
 					if (percentage <= 1)
 					{
 						float speed = _movementSpeed - (_movementSpeed * percentage);
+						//dir = (_path[0].position - this.transform.position).normalized;
 						_rb.position += (dir * speed) * Time.deltaTime;
 
 
 						if (startGoBack)
 						{
+							dir = (_path[0].position - this.transform.position).normalized;
 							startGoBack = false;
 						}
 
@@ -97,6 +104,7 @@ public class EnemyController : MonoBehaviour
 				float percentage =  Mathf.Clamp( Map(CurrentTotalResistance, 0, _resistance, 0, 1) - 1,0,1);
 				float Speed = (percentage * _movementSpeed);
 				Debug.Log("Speed: " + Speed + " percentage: " + percentage);
+				dir = (this.transform.position - _path[0].position).normalized;
 				_rb.position += (dir * Speed) * Time.deltaTime;
 
 				float distanceToPortal = Vector2.Distance(this.transform.position, _portalPos);
@@ -105,6 +113,7 @@ public class EnemyController : MonoBehaviour
 					_rb.velocity = Vector2.zero;
 					IsActive = false;
 					this.gameObject.SetActive(false);
+			
 				}
 			}
 		}
@@ -112,6 +121,15 @@ public class EnemyController : MonoBehaviour
 
 
 	}
+
+
+	public Transform GiveHeroPosition()
+	{
+		return null;
+	}
+
+
+
 
 	public float Map(float value, float inMin, float inMax, float OutMin, float outMax)
 	{

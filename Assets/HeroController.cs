@@ -14,12 +14,18 @@ public class HeroController : MonoBehaviour
 	bool _startGoingToEnemy;
 	Vector2 dir;
 	Rigidbody2D rb;
+
+	public bool IsPushing;
 	private void Awake()
 	{
 		rb = GetComponent<Rigidbody2D>();
 	}
 	private void Update()
 	{
+
+		if (IsPushing)
+			return;
+
 		if(EnemyTrans == null)
 		{
 			if (Physics2D.OverlapCircle(this.transform.position, DetectionRadius, EnemyMask) != null)
@@ -50,11 +56,21 @@ public class HeroController : MonoBehaviour
 
 		if (_startGoingToEnemy)
 		{
-			dir = (EnemyTrans.transform.position - transform.position).normalized;
+			dir = (EnemyTrans.transform.position + new Vector3(0.5f,0,0) - transform.position).normalized;
 			rb.position += (dir * movementSpeed) * Time.deltaTime;
 		}
 
 	}
+
+
+
+
+	//
+
+
+
+
+
 	private void OnDrawGizmos()
 	{
 		Gizmos.color = Color.red;
