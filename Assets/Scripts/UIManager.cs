@@ -8,9 +8,28 @@ public class UIManager : MonoBehaviour
     bool isOpen;
     bool muteSfx, muteMusic;
 
+    #region Upgrades
+    public void CallHero()
+    {
+        SoundManager.getInstance.PlayUpgradeSfx();
+    }
+    public void PowerHereoes()
+    {
+        SoundManager.getInstance.PlayUpgradeSfx();
+    }
+    public void SpeedHeroes()
+    {
+        SoundManager.getInstance.PlayUpgradeSfx();
+    }
+    #endregion
+
+
+    #region Settings
     public void OpenSettingsMenu()
     {
-        if(isOpen == false)
+        SoundManager.getInstance.PlayTapSfx();
+
+        if (isOpen == false)
         {
             settingsMenu.SetActive(true);
             isOpen = true;
@@ -21,14 +40,14 @@ public class UIManager : MonoBehaviour
             isOpen = false; 
         }
     }
-
     public void ChangeSounds()
     {
+        SoundManager.getInstance.PlayTapSfx();
         if (muteSfx == false)
         {
             soundsMuteImg.enabled = true;
             muteSfx = true;
-            for (int i = 0; i < SoundManager.getInstance.musicList.Length; i++)
+            for (int i = 0; i < SoundManager.getInstance.sfxList.Length; i++)
             {
                 SoundManager.getInstance.sfxList[i].volume = 0;
             }
@@ -37,14 +56,15 @@ public class UIManager : MonoBehaviour
         {
             soundsMuteImg.enabled = false;
             muteSfx = false;
-            for (int i = 0; i < SoundManager.getInstance.musicList.Length; i++)
+            for (int i = 0; i < SoundManager.getInstance.sfxList.Length; i++)
             {
-                SoundManager.getInstance.sfxList[i].volume = 0.3f;
+                SoundManager.getInstance.sfxList[i].volume = 0.2f;
             }
         }
     }
     public void ChangeMusic()
     {
+        SoundManager.getInstance.PlayTapSfx();
         if (muteMusic == false)
         {
             musicMuteImg.enabled = true;
@@ -58,4 +78,5 @@ public class UIManager : MonoBehaviour
             SoundManager.getInstance.musicList[0].volume = 0.1f;
         }
     }
+    #endregion
 }
