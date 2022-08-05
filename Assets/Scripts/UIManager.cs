@@ -58,7 +58,7 @@ public class UIManager : MonoBehaviour
             muteSfx = false;
             for (int i = 0; i < SoundManager.getInstance.sfxList.Length; i++)
             {
-                SoundManager.getInstance.sfxList[i].volume = 0.2f;
+                SoundManager.getInstance.sfxList[i].volume = 0.1f;
             }
         }
     }
