@@ -10,6 +10,8 @@ public class HeroManager : MonoBehaviour
 	public List<HeroController> HeroPool = new List<HeroController>();
 	public Transform parent;
 	public Transform endTrans;
+
+	public Transform landPos;
 	private void Awake()
 	{
 		if (_instance == null)
@@ -47,7 +49,7 @@ public class HeroManager : MonoBehaviour
 		float distance = float.MaxValue;
 		for (int i = 0; i < HeroPool.Count; i++)
 		{
-			if (HeroPool[i].IsActive && !HeroPool[i].IsHeroAttacking())
+			if (HeroPool[i].IsActive && !HeroPool[i].IsHeroAttacking() && !HeroPool[i].respawn)
 			{
 				if (Vector2.Distance(HeroPool[i].transform.position, enemy.transform.position) < distance)
 				{
@@ -84,4 +86,17 @@ public class HeroManager : MonoBehaviour
 		}
 	}
 
+	public int GetAmountOfHeroes()
+	{
+		int amount = 0;
+		for (int i = 0; i < HeroPool.Count; i++)
+		{
+			if (HeroPool[i].IsActive)
+			{
+				amount++;
+			}
+		}
+
+		return amount;
+	}
 }

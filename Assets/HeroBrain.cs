@@ -17,9 +17,9 @@ public class HeroBrain : MonoBehaviour
 
 	private void Awake()
 	{
-		_idleState = new HeroIdleState(Controller, this);
-		_goTowardPushPosState = new HeroGoTowardPushPosState(Controller, this);
-		_pushingState = new HeroPushingState(Controller, this);
+		_idleState = new HeroIdleState(Controller, this, Controller.heroAnimation, "IsIdle");
+		_goTowardPushPosState = new HeroGoTowardPushPosState(Controller, this, Controller.heroAnimation, "IsWalking");
+		_pushingState = new HeroPushingState(Controller, this, Controller.heroAnimation, "IsPushing");
 		_currentState = _idleState;
 		_currentState.EnterState();
 	}
@@ -28,6 +28,13 @@ public class HeroBrain : MonoBehaviour
 	{
 		if (_currentState == null)
 			return;
+		if (Controller.respawn)
+		{
+			Controller.GoTowardPosition(HeroManager.GetInstance.landPos.position);
+			return;
+		}
+
+
 		_currentState.UpdateState();
 	}
 

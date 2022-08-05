@@ -6,16 +6,20 @@ public class HeroGoTowardPushPosState : BaseState
 {
 	HeroController _controller;
 	HeroBrain _brain;
+	HeroAnimation _animation;
+	string _animationName;
 
-	public HeroGoTowardPushPosState(HeroController controller,HeroBrain brain) : base()
+	public HeroGoTowardPushPosState(HeroController controller,HeroBrain brain, HeroAnimation animation, string animationName) : base()
 	{
 		_brain = brain;
 		_controller = controller;
+		_animation = animation;
+		_animationName = animationName;
 	}
 
 	public override void EnterState()
 	{
-
+		_animation.SetAnimatorBool(_animationName, true);
 	}
 
 	public override void UpdateState()
@@ -44,6 +48,6 @@ public class HeroGoTowardPushPosState : BaseState
 
 	public override void ExitState()
 	{
-
+		_animation.SetAnimatorBool(_animationName, false);
 	}
 }

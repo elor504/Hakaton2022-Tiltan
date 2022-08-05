@@ -24,11 +24,14 @@ public class WaveManager : MonoBehaviour
 			if (waveInfo[currentWave].CanSpawnEnemies())
 			{
 				EnemyManager.GetInstance.InstantiateEnemy(waveInfo[currentWave].GetRandomEnemy());
-				for (int i = 0; i < 1; i++)
-				{
-					yield return new WaitForSeconds(0.2f);
-					HeroManager.GetInstance.InstantiateHero();
-				}
+
+			}
+			if (waveInfo[currentWave].CanSpawnHeroes())
+			{
+
+				yield return new WaitForSeconds(0.2f);
+				HeroManager.GetInstance.InstantiateHero();
+
 			}
 		}
 
@@ -45,7 +48,13 @@ public class WaveInfo
 	public List<EnemyController> enemiesPF;
 
 	public int maxAmountOfEnemiesAlive;
+	public int maxAmountOfHeroesAlive;
 
+
+	public bool CanSpawnHeroes()
+	{
+		return HeroManager.GetInstance.GetAmountOfHeroes() < maxAmountOfHeroesAlive;
+	}
 
 	public bool CanSpawnEnemies()
 	{

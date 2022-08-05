@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HeroController : MonoBehaviour
 {
+	public HeroAnimation heroAnimation;
     public LayerMask EnemyMask;
     public float DetectionRadius;
 	public HeroBrain Brain;
@@ -21,17 +22,27 @@ public class HeroController : MonoBehaviour
 		_rb = GetComponent<Rigidbody2D>();
 	}
 
+	public bool respawn;
 
 	public void InitHero(Vector2 pos)
 	{
 		this.transform.position = pos;
 		IsActive = true;
 		this.gameObject.SetActive(true);
+		respawn = true;
 	}
 	public void GoTowardPosition(Vector2 pos)
 	{
 		dir = (pos - (Vector2)this.transform.position).normalized;
 		_rb.position += (dir * movementSpeed) * Time.deltaTime;
+
+		if (respawn)
+		{
+			float distance = Vector2.Distance(transform.position, pos);
+			if (distance <= 0.2f)
+				respawn = false;
+		}
+
 	}
 	//
 	public void ReleaseHero()
