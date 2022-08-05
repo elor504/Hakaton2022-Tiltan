@@ -37,26 +37,26 @@ public class SoundManager : MonoBehaviour
 
     public void PlayTapSfx()
     {
-        sfxList[0].Stop();
+        sfxList[0].Play();
     }
     public void PlayUpgradeSfx()
     {
-        sfxList[1].Stop();
+        sfxList[1].Play();
     }
     public void PlaySpawnHeroSfx()
     {
-        sfxList[2].Stop();
+        sfxList[2].Play();
     }
     public void PlaySpawnMonsterSfx()
     {
-        sfxList[3].Stop();
+        sfxList[3].Play();
     }
     public void PlayDespawnMonsterSfx()
     {
-        sfxList[4].Stop();
+        sfxList[4].Play();
     }
     public void PlayUnitsMeetSfx()
     {
-        sfxList[5].Stop();
+        sfxList[5].Play();
     }
 }
