@@ -1899,6 +1899,8 @@ MonoBehaviour:
   EndTrans: {fileID: 0}
   EnemyPool: []
   EnemyPF: {fileID: 7532190970169232849, guid: ae55f2b3379c428418df13860538848c, type: 3}
+  EnemyTwoPF: {fileID: 0}
+  EnemyThreePF: {fileID: 0}
 --- !u!114 &775243519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4283,6 +4285,7 @@ GameObject:
   - component: {fileID: 1555507801}
   - component: {fileID: 1555507803}
   - component: {fileID: 1555507802}
+  - component: {fileID: 1555507804}
   m_Layer: 5
   m_Name: Text_Points
   m_TagString: Untagged
@@ -4339,7 +4342,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 16777215
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -4407,6 +4410,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1555507800}
   m_CullTransparentMesh: 1
+--- !u!95 &1555507804
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555507800}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a3568efb67f23654b9aafa951b62a3ba, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1595410733
 GameObject:
   m_ObjectHideFlags: 0
@@ -5474,8 +5496,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 1555507801}
     m_Modifications:
     - target: {fileID: 1369033193685378077, guid: 1f660dba34365e94f8e0fe883f8d050d, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1369033193685378077, guid: 1f660dba34365e94f8e0fe883f8d050d, type: 3}
       propertyPath: lengthInSec
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1369033193685378077, guid: 1f660dba34365e94f8e0fe883f8d050d, type: 3}
+      propertyPath: playOnAwake
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1369033193685378077, guid: 1f660dba34365e94f8e0fe883f8d050d, type: 3}
       propertyPath: ShapeModule.arc.value
