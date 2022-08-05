@@ -6,16 +6,20 @@ public class HeroPushingState : BaseState
 {
 	HeroController _controller;
 	HeroBrain _brain;
+	HeroAnimation _animation;
+	string _animationName;
 
-	public HeroPushingState(HeroController controller, HeroBrain brain) : base()
+	public HeroPushingState(HeroController controller, HeroBrain brain, HeroAnimation animation, string animationName) : base()
 	{
 		_brain = brain;
 		_controller = controller;
+		_animation = animation;
+		_animationName = animationName;
 	}
 
 	public override void EnterState()
 	{
-
+		_animation.SetAnimatorBool(_animationName, true);
 	}
 
 	public override void UpdateState()
@@ -33,6 +37,6 @@ public class HeroPushingState : BaseState
 
 	public override void ExitState()
 	{
-
+		_animation.SetAnimatorBool(_animationName, false);
 	}
 }

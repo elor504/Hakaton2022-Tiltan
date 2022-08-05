@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+	public int ID;
+
+
 	[SerializeField] float _movementSpeed;
 	[SerializeField] float _resistanceTolerance;
 
@@ -49,7 +52,7 @@ public class EnemyController : MonoBehaviour
 
 		float percentage = Map(GetCurrentResistance(), 0, _resistanceTolerance, 0, 1);
 		float speed = _movementSpeed - (_movementSpeed * percentage);
-		Debug.Log("Percentage: " + percentage + " movementSpeed: " + speed);
+		//Debug.Log("Percentage: " + percentage + " movementSpeed: " + speed);
 		speed = Mathf.Clamp(speed, 0, _movementSpeed);
 		//float speed = _movementSpeed /2;
 		_rb.position += (dir * speed) * Time.deltaTime;
@@ -61,7 +64,7 @@ public class EnemyController : MonoBehaviour
 
 		float speed = _movementSpeed - (_movementSpeed / percentage);
 		speed = Mathf.Clamp(speed, 0, _movementSpeed);
-		Debug.Log("Percentage: " + percentage + " movementSpeed: " + speed);
+		//Debug.Log("Percentage: " + percentage + " movementSpeed: " + speed);
 		_rb.position += (dir * speed) * Time.deltaTime;
 	}
 	public void DeactivateEnemy()

@@ -13,6 +13,8 @@ public class EnemyManager : MonoBehaviour
 	[Header("Pool")]
 	public List<EnemyController> EnemyPool = new List<EnemyController>();
 	public EnemyController EnemyPF;
+	public EnemyController EnemyTwoPF;
+	public EnemyController EnemyThreePF;
 
 	private void Awake()
 	{
@@ -28,7 +30,9 @@ public class EnemyManager : MonoBehaviour
 	{
 		if (Input.GetKeyDown(KeyCode.D))
 		{
-			InstantiateEnemy();
+			//InstantiateEnemy(EnemyPF);
+			//InstantiateEnemy(EnemyTwoPF);
+			//InstantiateEnemy(EnemyThreePF);
 		}
 	}
 
@@ -38,12 +42,12 @@ public class EnemyManager : MonoBehaviour
 		int randomIndex = Random.Range(0, Portals.Count);
 		return Portals[randomIndex];
 	}
-	public void InstantiateEnemy()
+	public void InstantiateEnemy(EnemyController PF)
 	{
 		if (EnemyPool.Count == 0)
 		{
 			Vector2 portalPos = GetRandomPortal().position;
-			EnemyController newEnemy = Instantiate(EnemyPF, portalPos, Quaternion.identity, parent);
+			EnemyController newEnemy = Instantiate(PF, portalPos, Quaternion.identity, parent);
 			newEnemy.Init(portalPos);
 			EnemyPool.Add(newEnemy);
 		}
@@ -52,9 +56,8 @@ public class EnemyManager : MonoBehaviour
 			Vector2 portalPos = GetRandomPortal().position;
 			for (int i = 0; i < EnemyPool.Count; i++)
 			{
-				if (!EnemyPool[i].IsActive)
+				if (!EnemyPool[i].IsActive && EnemyPool[i].ID == PF.ID)
 				{
-
 					EnemyPool[i].transform.position = portalPos;
 					EnemyPool[i].Init(portalPos);
 					EnemyPool[i].gameObject.SetActive(true);
@@ -63,7 +66,7 @@ public class EnemyManager : MonoBehaviour
 			}
 
 
-			EnemyController newEnemy = Instantiate(EnemyPF, portalPos, Quaternion.identity, parent);
+			EnemyController newEnemy = Instantiate(PF, portalPos, Quaternion.identity, parent);
 			newEnemy.Init(portalPos);
 			EnemyPool.Add(newEnemy);
 		}
@@ -94,5 +97,18 @@ public class EnemyManager : MonoBehaviour
 		return closestEnemy;
 	}
 
+	public int GetAmountOfEnemiesAlive()
+	{
+		int amount = 0;
 
+		for (int i = 0; i < EnemyPool.Count; i++)
+		{
+			if (EnemyPool[i].IsActive)
+			{
+				amount++;
+			}
+		}
+
+		return amount;
+	}
 }
