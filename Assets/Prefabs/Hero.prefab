@@ -92,9 +92,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6958038396534030637}
   - component: {fileID: 6958038396534030634}
+  - component: {fileID: 5413101807516882910}
   - component: {fileID: 6958038396534030636}
   - component: {fileID: 6958038396534030639}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Hero
   m_TagString: Hero
   m_Icon: {fileID: 0}
@@ -132,9 +133,25 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   DetectionRadius: 2.22
+  Brain: {fileID: 5413101807516882910}
   EnemyTrans: {fileID: 0}
-  movementSpeed: 1
-  Resistance: 7
+  movementSpeed: 1.1
+  Resistance: 6
+  IsActive: 0
+--- !u!114 &5413101807516882910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6958038396534030635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44c6babd1607f5d47b9edf28f64ce565, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Controller: {fileID: 6958038396534030634}
+  PushPos: {fileID: 0}
 --- !u!50 &6958038396534030636
 Rigidbody2D:
   serializedVersion: 4

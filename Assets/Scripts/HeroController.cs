@@ -6,70 +6,49 @@ public class HeroController : MonoBehaviour
 {
     public LayerMask EnemyMask;
     public float DetectionRadius;
-
+	public HeroBrain Brain;
     public Transform EnemyTrans;
 	public float movementSpeed;
 	public float Resistance;
 
-	bool _startGoingToEnemy;
 	Vector2 dir;
-	Rigidbody2D rb;
+	Rigidbody2D _rb;
 
-	public bool IsPushing;
+	public bool IsActive;
+
 	private void Awake()
 	{
-		rb = GetComponent<Rigidbody2D>();
+		_rb = GetComponent<Rigidbody2D>();
 	}
-	private void Update()
+
+
+	public void InitHero(Vector2 pos)
 	{
-
-		if (IsPushing)
-			return;
-
-		if(EnemyTrans == null)
-		{
-			if (Physics2D.OverlapCircle(this.transform.position, DetectionRadius, EnemyMask) != null)
-			{
-				EnemyTrans = Physics2D.OverlapCircle(this.transform.position, DetectionRadius, EnemyMask).transform;
-				if (_startGoingToEnemy)
-				{
-					_startGoingToEnemy = false;
-					rb.velocity = Vector2.zero;
-				}
-			}
-			return;
-		}
-		else
-		{
-			if (!_startGoingToEnemy)
-			{
-				_startGoingToEnemy = true;
-
-			}
-		}
-
-		if(!EnemyTrans.gameObject.activeInHierarchy)
-		{
-			EnemyTrans = null;
-			return;
-		}
-
-		if (_startGoingToEnemy)
-		{
-			dir = (EnemyTrans.transform.position + new Vector3(0.5f,0,0) - transform.position).normalized;
-			rb.position += (dir * movementSpeed) * Time.deltaTime;
-		}
-
+		this.transform.position = pos;
+		IsActive = true;
+		this.gameObject.SetActive(true);
+	}
+	public void GoTowardPosition(Vector2 pos)
+	{
+		dir = (pos - (Vector2)this.transform.position).normalized;
+		_rb.position += (dir * movementSpeed) * Time.deltaTime;
+	}
+	//
+	public void ReleaseHero()
+	{
+		Brain.PushPos = null;
 	}
 
+	public void DisableHero()
+	{
+		IsActive = false;
+		this.gameObject.SetActive(false);
+	}
 
-
-
-	//
-
-
-
-
+	public bool IsHeroAttacking()
+	{
+		return Brain.IsHeroAttacking();
+	}
 
 	private void OnDrawGizmos()
 	{

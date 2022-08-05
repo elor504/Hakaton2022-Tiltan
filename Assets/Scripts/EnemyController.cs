@@ -8,7 +8,6 @@ public class EnemyController : MonoBehaviour
 
 	public float CurrentTotalResistance;
 	[SerializeField]float _totalResistance;
-	bool _moveTowardGoal => CurrentTotalResistance < _resistanceTolerance;
 
 	[SerializeField]Rigidbody2D _rb;
 	Vector2 dir;
@@ -30,8 +29,6 @@ public class EnemyController : MonoBehaviour
 		return currentResistance;
 	}
 
-
-
 	private void Awake()
 	{
 		_rb = GetComponent<Rigidbody2D>();
@@ -41,40 +38,73 @@ public class EnemyController : MonoBehaviour
 	{
 		_portalPos = portalPos;
 		IsActive = true;
+		for (int i = 0; i < HeroPos.Count; i++)
+		{
+			HeroPos[i].Clear();
+		}
 	}
 	public void GoTowardPosition(Vector2 pos)
 	{
 		dir = (pos - (Vector2)this.transform.position).normalized;
-		
-		float speed = _movementSpeed /2;
+
+		float percentage = Map(GetCurrentResistance(), 0, _resistanceTolerance, 0, 1);
+		float speed = _movementSpeed - (_movementSpeed * percentage);
+		Debug.Log("Percentage: " + percentage + " movementSpeed: " + speed);
+		speed = Mathf.Clamp(speed, 0, _movementSpeed);
+		//float speed = _movementSpeed /2;
 		_rb.position += (dir * speed) * Time.deltaTime;
 	}
 	public void GoTowardPortal()
 	{
 		dir = (_portalPos - (Vector2)this.transform.position).normalized;
-		float percentage = Map(CurrentTotalResistance, 0, _resistanceTolerance, 0, 1);
-		float speed = _movementSpeed - (_movementSpeed * percentage);
+		float percentage = Map(GetCurrentResistance(), 0, _resistanceTolerance, 0, 1);
+
+		float speed = _movementSpeed - (_movementSpeed / percentage);
+		speed = Mathf.Clamp(speed, 0, _movementSpeed);
+		Debug.Log("Percentage: " + percentage + " movementSpeed: " + speed);
 		_rb.position += (dir * speed) * Time.deltaTime;
 	}
 	public void DeactivateEnemy()
 	{
 		IsActive = false;
 		this.gameObject.SetActive(false);
+		for (int i = 0; i < HeroPos.Count; i++)
+		{
+			HeroPos[i].Clear();
+		}
+	
 	}
-
 	public bool CheckIfNeedToBePushedBack()
 	{
 		return GetCurrentResistance() >= _resistanceTolerance;
 	}
 
-
+	public bool CanBeTargeted()
+	{
+		for (int i = 0; i < HeroPos.Count; i++)
+		{
+			if (!HeroPos[i].IsBeingTargetedByHero)
+				return true;
+		}
+		return false;
+	}
+	public PushPos GetAvailablePushPos()
+	{
+		for (int i = 0; i < HeroPos.Count; i++)
+		{
+			if (!HeroPos[i].IsBeingTargetedByHero)
+			{
+				HeroPos[i].SetBeingTarget(true);
+				return HeroPos[i];
+			}
+		}
+		return null;
+	}
 
 	public float Map(float value, float inMin, float inMax, float OutMin, float outMax)
 	{
 		return (value - inMin) * (outMax - OutMin) / (inMax - inMin) + OutMin;
 	}
-
-
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
