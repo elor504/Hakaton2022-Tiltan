@@ -382,6 +382,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hero (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6958038396534030635, guid: 8ea4b1ac17f17f048908e31f8cebc467, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6958038396534030637, guid: 8ea4b1ac17f17f048908e31f8cebc467, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -1944,7 +1948,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1783673211
 GameObject:
@@ -2078,9 +2082,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hero
       objectReference: {fileID: 0}
+    - target: {fileID: 6958038396534030635, guid: 8ea4b1ac17f17f048908e31f8cebc467, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6958038396534030637, guid: 8ea4b1ac17f17f048908e31f8cebc467, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6958038396534030637, guid: 8ea4b1ac17f17f048908e31f8cebc467, type: 3}
       propertyPath: m_LocalPosition.x

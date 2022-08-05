@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -22,7 +21,19 @@ public class PathManager : MonoBehaviour
 	}
 
 
+	public List<Transform> GetEnemyRandomizedPath(Transform enemyPos)
+	{
+		List<Transform> path = new List<Transform>();
+		for (int i = 0; i < _pathList.Count; i++)
+		{
+			Transform randomizedPath = _pathList[i].GetRandomPath();
+			if (enemyPos.position.x < randomizedPath.position.x)
+				path.Add(randomizedPath);
+		}
 
+
+		return path;
+	}
 	public List<Transform> GetEnemyRandomizedPath()
 	{
 		List<Transform> path = new List<Transform>();
