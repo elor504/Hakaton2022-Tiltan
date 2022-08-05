@@ -421,7 +421,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 319268968}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 384353269}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: OpenSettingsMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &319268968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -472,6 +484,7 @@ GameObject:
   - component: {fileID: 384353267}
   - component: {fileID: 384353266}
   - component: {fileID: 384353265}
+  - component: {fileID: 384353269}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -565,6 +578,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &384353269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 384353264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 348eaebb9a11a654491c8fb96733a823, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  settingsMenu: {fileID: 683628221}
+  soundsMuteImg: {fileID: 1124098672}
+  musicMuteImg: {fileID: 453555648}
 --- !u!1 &407811449
 GameObject:
   m_ObjectHideFlags: 0
@@ -684,7 +712,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 453555646}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -751,7 +779,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1, y: 84}
+  m_AnchoredPosition: {x: -1, y: 79}
   m_SizeDelta: {x: 512, y: 512}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &463654871
@@ -797,7 +825,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 463654872}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 384353269}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: ChangeMusic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &463654872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -849,7 +889,7 @@ GameObject:
   - component: {fileID: 490781886}
   - component: {fileID: 490781885}
   m_Layer: 5
-  m_Name: Button_Music (1)
+  m_Name: Button_SFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -872,7 +912,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1, y: -56}
+  m_AnchoredPosition: {x: -1, y: -61}
   m_SizeDelta: {x: 512, y: 512}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &490781885
@@ -918,7 +958,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 490781886}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 384353269}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: ChangeSounds
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &490781886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1358,7 +1410,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &683628222
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2831,7 +2883,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1124098670}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -3866,6 +3918,10 @@ PrefabInstance:
     - target: {fileID: 1043062566887965566, guid: c9767d8729a07a747b85b67aec05ea79, type: 3}
       propertyPath: m_Name
       value: TapEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 1043062566887965566, guid: c9767d8729a07a747b85b67aec05ea79, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1043062566887965567, guid: c9767d8729a07a747b85b67aec05ea79, type: 3}
       propertyPath: m_MaxParticleSize
@@ -5121,11 +5177,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1238981546914197547, guid: 5ff685ad20be9724b96e0a6489557e73, type: 3}
       propertyPath: playOnAwake
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1238981546914197549, guid: 5ff685ad20be9724b96e0a6489557e73, type: 3}
       propertyPath: m_Name
       value: ZzzEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 1238981546914197549, guid: 5ff685ad20be9724b96e0a6489557e73, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ff685ad20be9724b96e0a6489557e73, type: 3}
@@ -5136,9 +5196,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2045248566007918884, guid: a48bd7fee956139438a8fc5489deb206, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2045248566007918886, guid: a48bd7fee956139438a8fc5489deb206, type: 3}
       propertyPath: m_Name
       value: SpawnMonsterEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045248566007918886, guid: a48bd7fee956139438a8fc5489deb206, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2045248566007918891, guid: a48bd7fee956139438a8fc5489deb206, type: 3}
       propertyPath: m_RootOrder
@@ -5193,17 +5261,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3246437680839994236, guid: 5af8f5ecf9b3ee349ab7ec7cea0faeab, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3246437680839994237, guid: 5af8f5ecf9b3ee349ab7ec7cea0faeab, type: 3}
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3246437680839994237, guid: 5af8f5ecf9b3ee349ab7ec7cea0faeab, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.46
+      value: -6.33
       objectReference: {fileID: 0}
     - target: {fileID: 3246437680839994237, guid: 5af8f5ecf9b3ee349ab7ec7cea0faeab, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.07
+      value: -0.97
       objectReference: {fileID: 0}
     - target: {fileID: 3246437680839994237, guid: 5af8f5ecf9b3ee349ab7ec7cea0faeab, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5241,6 +5313,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DespawnEffect
       objectReference: {fileID: 0}
+    - target: {fileID: 3246437680839994238, guid: 5af8f5ecf9b3ee349ab7ec7cea0faeab, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5af8f5ecf9b3ee349ab7ec7cea0faeab, type: 3}
 --- !u!198 &5736299802262962304 stripped
@@ -5258,6 +5334,10 @@ PrefabInstance:
     - target: {fileID: 7938137221975254153, guid: 1c45ea1c666404848b90d85ab39283d3, type: 3}
       propertyPath: m_Name
       value: SpawnHeroEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 7938137221975254153, guid: 1c45ea1c666404848b90d85ab39283d3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7938137221975254154, guid: 1c45ea1c666404848b90d85ab39283d3, type: 3}
       propertyPath: m_RootOrder
@@ -5301,6 +5381,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7938137221975254154, guid: 1c45ea1c666404848b90d85ab39283d3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7938137221975254155, guid: 1c45ea1c666404848b90d85ab39283d3, type: 3}
+      propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

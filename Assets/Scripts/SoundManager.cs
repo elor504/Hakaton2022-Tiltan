@@ -19,6 +19,8 @@ public class SoundManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+        PlayGameplayMusic(true);
     }
 
     public void PlayGameplayMusic(bool isPlay)
