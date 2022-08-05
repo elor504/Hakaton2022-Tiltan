@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class UpgradeManager : MonoBehaviour
@@ -11,12 +12,13 @@ public class UpgradeManager : MonoBehaviour
 	public int AmountOfHeroesLevel;
 
 	[Header("Upgrade cost Base")]
-	public int ResistanceBaseCost;
-	public int MovementSpeedBaseCost;
+	public List<int> ResistanceCost = new List<int>();
+	public List<int> MovementSpeedCost = new List<int>();
+	public List<int> AmountOfHeroesCost = new List<int>();
 
-	[Header("Upgrade cost Per")]
-	public float ResistanceCostPer;
-	public float MovementSpeedCostPer;
+	//[Header("Upgrade cost Per")]
+	//public float ResistanceCostPer;
+	//public float MovementSpeedCostPer;
 
 
 	[Header("Bonus percentage")]
@@ -25,11 +27,16 @@ public class UpgradeManager : MonoBehaviour
 
 	private void Awake()
 	{
-
+		ResistanceLevel = 1;
+		MovementSpeedLevel = 1;
+		AmountOfHeroesLevel = 1;
 		if (_instance == null)
 			_instance = this;
 		else if (_instance != this)
 			Destroy(this.gameObject);
+
+
+		UIUpgrade.GetInstance.UpdateTexts();
 
 	}
 	private void Update()
@@ -37,28 +44,86 @@ public class UpgradeManager : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.N))
 		{
 			UpgradeResistance();
+			//UpgradeMovement();
 		}
 	}
 
 	public void UpgradeResistance()
 	{
+		if (ResistanceLevel == 10)
+			return;
+
 		int currency = GameManager.GetInstance.Points;
 
-		Debug.Log("Cost: " + GetCost(ResistanceLevel, ResistanceCostPer, ResistanceBaseCost));
-		if (currency >= GetCost(ResistanceLevel, ResistanceCostPer, ResistanceBaseCost))
+		Debug.Log("Cost: " + GetResistanceCost());
+		if(GameManager.GetInstance.HasEnoughPoints(GetResistanceCost()))
 		{
-
+			ResistanceLevel++;
+			GameManager.GetInstance.RemovePoints(GetResistanceCost());
+			UIUpgrade.GetInstance.UpdateTexts();
 		}
-
 	}
 
-	int GetCost(int level,float per,int baseCost)
+	public float GetResistancePercentage()
 	{
-		if (level == 1)
-			return baseCost;
+		return (ResistancePer * ResistanceLevel) - ResistancePer;
+	}
+	public int GetResistanceCost()
+	{
+		return GetCost(ResistanceLevel, ResistanceCost);
+	}
 
 
-		return baseCost + (Mathf.RoundToInt(baseCost * (per * level)));
+	public void UpgradeMovement()
+	{
+		if (MovementSpeedLevel == 10)
+			return;
+
+		Debug.Log("Cost: " + GetMovementCost());
+		if(GameManager.GetInstance.HasEnoughPoints(GetMovementCost()))
+		{
+			MovementSpeedLevel++;
+			GameManager.GetInstance.RemovePoints(GetMovementCost());
+			UIUpgrade.GetInstance.UpdateTexts();
+		}
+	}
+
+	public float GetMovementPercentage()
+	{
+		return (MovementSpeedPer * MovementSpeedLevel) - MovementSpeedPer;
+	}
+
+	public int GetMovementCost()
+	{
+		return GetCost(MovementSpeedLevel, MovementSpeedCost);
+	}
+
+
+
+	public void UpgradeMaxHeroes()
+	{
+		if (AmountOfHeroesLevel == 10)
+			return;
+
+		Debug.Log("Cost: " + GetMaxHeroesCost());
+		if (GameManager.GetInstance.HasEnoughPoints(GetMaxHeroesCost()))
+		{
+			AmountOfHeroesLevel++;
+			GameManager.GetInstance.RemovePoints(GetMaxHeroesCost());
+			UIUpgrade.GetInstance.UpdateTexts();
+		}
+	}
+
+	public int GetMaxHeroesCost()
+	{
+		return GetCost(AmountOfHeroesLevel, AmountOfHeroesCost);
+	}
+
+
+
+	int GetCost(int level,List<int> baseCost)
+	{
+		return baseCost[level - 1];
 	}
 
 }

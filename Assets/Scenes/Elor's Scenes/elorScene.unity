@@ -167,6 +167,7 @@ GameObject:
   - component: {fileID: 16788596}
   - component: {fileID: 16788595}
   - component: {fileID: 16788600}
+  - component: {fileID: 16788601}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -288,6 +289,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: {fileID: 2101323150}
+--- !u!114 &16788601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 16788594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3242cd6344c17fe4484782fe53991e09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MovementCostText: {fileID: 867636275}
+  ResistanceCostText: {fileID: 305043573}
+  MaxHeroesCostText: {fileID: 474422190}
 --- !u!1 &23691190
 GameObject:
   m_ObjectHideFlags: 0
@@ -1692,6 +1708,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 775243522}
+        m_TargetAssemblyTypeName: UpgradeManager, Assembly-CSharp
+        m_MethodName: UpgradeMaxHeroes
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &478503402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2191,6 +2219,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 775243522}
+        m_TargetAssemblyTypeName: UpgradeManager, Assembly-CSharp
+        m_MethodName: UpgradeResistance
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &629388383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2441,7 +2481,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tap: {fileID: 2008297881}
-  Points: 0
+  Points: 10000
   IsHeroesBoosted: 0
   BoostTimer: 0.2
   MovementPercentage: 0.1
@@ -2480,6 +2520,8 @@ MonoBehaviour:
   - timeBetweenSpawn: 1
     enemiesPF:
     - {fileID: 7532190970169232849, guid: ae55f2b3379c428418df13860538848c, type: 3}
+    - {fileID: 7532190970169232849, guid: b995807763abec345b95b6f1f530daa6, type: 3}
+    - {fileID: 7532190970169232849, guid: c588667011cf5f447911500061232bef, type: 3}
     maxAmountOfEnemiesAlive: 5
     maxAmountOfHeroesAlive: 10
   - timeBetweenSpawn: 1
@@ -2503,12 +2545,11 @@ MonoBehaviour:
   ResistanceLevel: 1
   MovementSpeedLevel: 1
   AmountOfHeroesLevel: 1
-  ResistanceBaseCost: 100
-  MovementSpeedBaseCost: 150
-  ResistanceCostPer: 0.1
-  MovementSpeedCostPer: 0.2
+  ResistanceCost: 0f0000001e0000004b00000096000000540100000c030000e20400001b080000bf130000
+  MovementSpeedCost: 0f0000001e0000004b00000096000000540100000c030000e20400001b080000bf130000
+  AmountOfHeroesCost: 0f0000001e0000004b00000096000000540100000c030000e20400001b080000bf130000
   ResistancePer: 0.1
-  MovementSpeedPer: 0.2
+  MovementSpeedPer: 0.1
 --- !u!1 &806237655
 GameObject:
   m_ObjectHideFlags: 0
@@ -5624,6 +5665,18 @@ MonoBehaviour:
       - m_Target: {fileID: 16788595}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: SpeedHeroes
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 775243522}
+        m_TargetAssemblyTypeName: UpgradeManager, Assembly-CSharp
+        m_MethodName: UpgradeMovement
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

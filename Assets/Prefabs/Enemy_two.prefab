@@ -46,7 +46,7 @@ MonoBehaviour:
   IsBeingTargetedByHero: 0
   IsTakenByHero: 0
   Hero: {fileID: 0}
-  Rotation: 0
+  Rotation: -30.801
 --- !u!1 &5979988695398672374
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,4 +363,4 @@ MonoBehaviour:
   IsBeingTargetedByHero: 0
   IsTakenByHero: 0
   Hero: {fileID: 0}
-  Rotation: 0
+  Rotation: 17.08
