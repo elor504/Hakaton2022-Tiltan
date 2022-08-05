@@ -46,6 +46,7 @@ MonoBehaviour:
   IsBeingTargetedByHero: 0
   IsTakenByHero: 0
   Hero: {fileID: 0}
+  Rotation: 0
 --- !u!1 &5979988695398672374
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,6 +93,7 @@ MonoBehaviour:
   IsBeingTargetedByHero: 0
   IsTakenByHero: 0
   Hero: {fileID: 0}
+  Rotation: 0
 --- !u!1 &7532190969365553874
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,6 +228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 1
+  Points: 50
   _movementSpeed: 0.4
   _resistanceTolerance: 15
   CurrentTotalResistance: 0
@@ -360,3 +363,4 @@ MonoBehaviour:
   IsBeingTargetedByHero: 0
   IsTakenByHero: 0
   Hero: {fileID: 0}
+  Rotation: 0

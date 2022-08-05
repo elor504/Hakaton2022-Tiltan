@@ -50,7 +50,7 @@ public class WaveInfo
 
 	public bool CanSpawnHeroes()
 	{
-		return HeroManager.GetInstance.GetAmountOfHeroes() < maxAmountOfHeroesAlive;
+		return HeroManager.GetInstance.GetAmountOfHeroes() < maxAmountOfHeroesAlive + UpgradeManager.GetInstance.AmountOfHeroesLevel;
 	}
 
 	public bool CanSpawnEnemies()

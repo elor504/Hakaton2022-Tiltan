@@ -4,7 +4,7 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
 	public int ID;
-
+	public int Points;
 
 	[SerializeField] float _movementSpeed;
 	[SerializeField] float _resistanceTolerance;
@@ -20,6 +20,8 @@ public class EnemyController : MonoBehaviour
 	public Vector2 GetPortalPos => _portalPos.transform.position;
 
 	public List<PushPos> HeroPos = new List<PushPos>();
+
+
 
 	public float GetCurrentResistance()
 	{
@@ -70,6 +72,7 @@ public class EnemyController : MonoBehaviour
 	}
 	public void DeactivateEnemy()
 	{
+		GameManager.GetInstance.AddPoints(Points);
 		SoundManager.getInstance.PlayDespawnMonsterSfx();
 		IsActive = false;
 		_portalPos.ActivateDespawnVFX();
