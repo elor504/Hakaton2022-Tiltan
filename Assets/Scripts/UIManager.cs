@@ -5,8 +5,25 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField]GameObject settingsMenu;
     [SerializeField] Image soundsMuteImg, musicMuteImg;
+    [SerializeField] CanvasScaler canvasScaler;
     bool isOpen;
     bool muteSfx, muteMusic;
+
+    private void Start()
+    {
+        if(Screen.currentResolution.width == 2160 || Screen.currentResolution.width == 2400 || Screen.currentResolution.width == 2220 || Screen.currentResolution.width == 2960)
+        {
+            canvasScaler.matchWidthOrHeight = 0;
+        }
+        else if(Screen.currentResolution.width == 1920 || Screen.currentResolution.width == 1280 || Screen.currentResolution.width == 2560)
+        {
+            canvasScaler.matchWidthOrHeight = 1;
+        }
+        else
+        {
+            canvasScaler.matchWidthOrHeight = 0.5f;
+        }
+    }
 
     #region Upgrades
     public void CallHero()
