@@ -41,6 +41,7 @@ public class EnemyManager : MonoBehaviour
 	}
 	public void InstantiateEnemy(EnemyController PF)
 	{
+		SoundManager.getInstance.PlaySpawnMonsterSfx();
 		if (EnemyPool.Count == 0)
 		{
 			Portal portalPos = GetRandomPortal();

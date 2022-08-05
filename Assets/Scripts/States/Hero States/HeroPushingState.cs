@@ -19,6 +19,7 @@ public class HeroPushingState : BaseState
 
 	public override void EnterState()
 	{
+		SoundManager.getInstance.PlayUnitsMeetSfx();
 		_animation.SetAnimatorBool(_animationName, true);
 	}
 

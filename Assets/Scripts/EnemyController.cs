@@ -70,6 +70,7 @@ public class EnemyController : MonoBehaviour
 	}
 	public void DeactivateEnemy()
 	{
+		SoundManager.getInstance.PlayDespawnMonsterSfx();
 		IsActive = false;
 		_portalPos.ActivateDespawnVFX();
 

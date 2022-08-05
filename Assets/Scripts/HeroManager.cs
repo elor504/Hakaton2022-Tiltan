@@ -67,6 +67,7 @@ public class HeroManager : MonoBehaviour
 
 	public void InstantiateHero()
 	{
+		SoundManager.getInstance.PlaySpawnHeroSfx();
 		if (HeroPool.Count == 0)
 		{
 			SpawnVfx.Play();
