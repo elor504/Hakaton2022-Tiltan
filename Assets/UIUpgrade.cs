@@ -41,14 +41,34 @@ public class UIUpgrade : MonoBehaviour
 		else if (scoreAmount >= 1000 && scoreAmount < 1000000)
 		{
 			type = "K";
-			amount = Mathf.FloorToInt(scoreAmount) * 0.001f;
-			return amount.ToString("F1") + type;
+			amount = Mathf.Round(scoreAmount) * 0.001f;
+
+
+			if (Mathf.Approximately(amount, Mathf.RoundToInt(amount)))
+			{
+				return amount.ToString() + type;
+			}
+			else
+			{
+				
+				return amount.ToString("F2") + type;
+			}
+
 		}
 		else if (scoreAmount >= 1000000)
 		{
 			type = "M";
-			amount = Mathf.Round((scoreAmount / 1000000) * 10.0f) * 0.1f;
-			return amount.ToString("F1") + type;
+			amount = Mathf.Round(scoreAmount) * 0.000001f;
+			if (Mathf.Approximately(amount, Mathf.RoundToInt(amount)))
+			{
+				return amount.ToString() + type;
+			}
+			else
+			{
+
+				return amount.ToString("F2") + type;
+			}
+			//return amount.ToString("F1") + type;
 		}
 		return null;
 	}

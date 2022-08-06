@@ -45,7 +45,7 @@ public class UIScore : MonoBehaviour
 		else if (scoreAmount >= 1000000)
 		{
 			type = "M";
-			amount = Mathf.Round((scoreAmount / 1000000) * 10.0f) * 0.1f;
+			amount = Mathf.Round(scoreAmount) * 0.000001f;
 
 			if (Mathf.Approximately(amount, Mathf.RoundToInt(amount)))
 			{
