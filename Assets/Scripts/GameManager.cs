@@ -39,12 +39,12 @@ public class GameManager : MonoBehaviour
 
 	void Update()
     {
-        if(Input.GetMouseButtonDown(0) && UIManager.getInstance.canVibrate == true && !EventSystem.current.IsPointerOverGameObject())
+        if(Input.GetMouseButtonDown(0) && UIManager.getInstance.canVibrate == true && !EventSystem.current.IsPointerOverGameObject(1))
         {
             // vibrating for 10 milliseconds with an amplitude of 50
             Vibration.Vibrate(10, 50);
         }
-        if(Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
+        if(Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject(1))
         {
             TapEffect();
             if (!IsHeroesBoosted)
