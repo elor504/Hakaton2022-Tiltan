@@ -3223,8 +3223,8 @@ MonoBehaviour:
   MovementSpeedLevel: 1
   AmountOfHeroesLevel: 1
   ResistanceCost: dc050000ca0800004b00000096000000540100000c030000e20400001b080000bf130000
-  MovementSpeedCost: 0f0000001e0000004b00000096000000540100000c030000e20400001b080000bf130000
-  AmountOfHeroesCost: 0f0000001e0000004b00000096000000540100000c030000e20400001b080000bf130000
+  MovementSpeedCost: dc050000ca0800004b00000096000000540100000c030000e20400001b080000bf130000
+  AmountOfHeroesCost: dc050000ca0800004b00000096000000540100000c030000e20400001b080000bf130000
   ResistancePer: 0.1
   MovementSpeedPer: 0.1
 --- !u!114 &775243523
@@ -5319,7 +5319,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: db5e23998be106942a34318dfa1b8f39, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 403c9965ac042e54b92c43056824f960, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
