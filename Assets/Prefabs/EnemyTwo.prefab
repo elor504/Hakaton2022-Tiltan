@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 0
-  Points: 30
+  Points: 70
   EnemyAnimator: {fileID: 1122848015631103442}
   _movementSpeed: 0.7
   _resistanceTolerance: 7
