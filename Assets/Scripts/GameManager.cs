@@ -65,8 +65,9 @@ public class GameManager : MonoBehaviour
     }
 
     
-    public void AddPoints(int amount)
+    public void AddPoints(int amount,Vector2 worldPos)
 	{
+        PointsPopUpManager.GetInstance.InstantiatePopUp(worldPos, amount.ToString());
         Points += amount;
         UIScore.GetInstance.SetTextScore(Points); 
     }
