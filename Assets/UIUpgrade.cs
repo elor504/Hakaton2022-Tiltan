@@ -51,7 +51,7 @@ public class UIUpgrade : MonoBehaviour
 			else
 			{
 				
-				return amount.ToString("F2") + type;
+				return amount.ToString("F1") + type;
 			}
 
 		}
@@ -66,7 +66,7 @@ public class UIUpgrade : MonoBehaviour
 			else
 			{
 
-				return amount.ToString("F2") + type;
+				return amount.ToString("F1") + type;
 			}
 			//return amount.ToString("F1") + type;
 		}

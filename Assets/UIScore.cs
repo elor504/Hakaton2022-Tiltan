@@ -39,7 +39,7 @@ public class UIScore : MonoBehaviour
 			}
 			else
 			{
-				score.text = amount.ToString("F2") + type;
+				score.text = amount.ToString("F1") + type;
 			}
 		}
 		else if (scoreAmount >= 1000000)
@@ -53,7 +53,7 @@ public class UIScore : MonoBehaviour
 			}
 			else
 			{
-				score.text = amount.ToString("F2") + type;
+				score.text = amount.ToString("F1") + type;
 			}
 
 			//score.text = amount.ToString("F1") + type;
