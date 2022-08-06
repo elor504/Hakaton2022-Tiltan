@@ -3199,8 +3199,8 @@ MonoBehaviour:
     - {fileID: 7532190970169232849, guid: ae55f2b3379c428418df13860538848c, type: 3}
     - {fileID: 3477082952332506741, guid: 178d618755daeca4897ad65826654f2a, type: 3}
     - {fileID: 8758601520986796440, guid: 44f0d3a67c6ee034cb43e471ddfff920, type: 3}
-    maxAmountOfEnemiesAlive: 5
-    maxAmountOfHeroesAlive: 13
+    maxAmountOfEnemiesAlive: 7
+    maxAmountOfHeroesAlive: 18
   - timeBetweenSpawn: 1
     enemiesPF:
     - {fileID: 7532190970169232849, guid: ae55f2b3379c428418df13860538848c, type: 3}
