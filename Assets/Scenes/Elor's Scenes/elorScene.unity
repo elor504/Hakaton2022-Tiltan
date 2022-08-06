@@ -3161,8 +3161,8 @@ MonoBehaviour:
   Points: 1000
   IsHeroesBoosted: 0
   BoostTimer: 0.2
-  MovementPercentage: 0.1
-  ResistancePercentage: 0.1
+  MovementPercentage: 0.3
+  ResistancePercentage: 0.3
 --- !u!114 &775243520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3222,9 +3222,9 @@ MonoBehaviour:
   ResistanceLevel: 1
   MovementSpeedLevel: 1
   AmountOfHeroesLevel: 1
-  ResistanceCost: dc050000ca0800004b00000096000000540100000c030000e20400001b080000bf130000
-  MovementSpeedCost: dc050000ca0800004b00000096000000540100000c030000e20400001b080000bf130000
-  AmountOfHeroesCost: dc050000ca0800004b00000096000000540100000c030000e20400001b080000bf130000
+  ResistanceCost: dc05000098080000540b0000ac0d000068100000c0120000e015000038180000581b0000
+  MovementSpeedCost: dc05000098080000540b0000ac0d000068100000e0150000e204000038180000581b0000
+  AmountOfHeroesCost: dc05000098080000540b0000ac0d000068100000e0150000e204000038180000581b0000
   ResistancePer: 0.1
   MovementSpeedPer: 0.1
 --- !u!114 &775243523
