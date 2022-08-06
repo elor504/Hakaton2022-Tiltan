@@ -4805,7 +4805,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1088.91, y: -539.57}
+  m_AnchoredPosition: {x: -1082.06, y: -542.75}
   m_SizeDelta: {x: 2.5, y: 1.45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1505493487
@@ -5175,7 +5175,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &1603183430
 RectTransform:
