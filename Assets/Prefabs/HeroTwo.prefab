@@ -25,8 +25,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6958038396465500096}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.498, z: 2.602274}
-  m_LocalScale: {x: 0.29464912, y: 0.29464912, z: 0.29464912}
+  m_LocalPosition: {x: 0, y: 0.617, z: 2.602274}
+  m_LocalScale: {x: 0.3625952, y: 0.3625952, z: 0.3625952}
   m_Children: []
   m_Father: {fileID: 6958038396534030637}
   m_RootOrder: 0
@@ -131,6 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 209c6f3eed20316438aaeb1bb2cc5bd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ID: 1
   heroAnimation: {fileID: 5160858664816235927}
   EnemyMask:
     serializedVersion: 2

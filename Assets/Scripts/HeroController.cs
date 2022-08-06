@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HeroController : MonoBehaviour
 {
+	public int ID;
 	public HeroAnimation heroAnimation;
 	public LayerMask EnemyMask;
 	public float DetectionRadius;

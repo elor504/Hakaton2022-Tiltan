@@ -6,7 +6,7 @@ public class HeroManager : MonoBehaviour
 	private static HeroManager _instance;
 	public static HeroManager GetInstance => _instance;
 
-	public HeroController heroPF;
+	public List<HeroController> heroPF;
 	public List<HeroController> HeroPool = new List<HeroController>();
 	public Transform parent;
 	public Transform endTrans;
@@ -67,11 +67,17 @@ public class HeroManager : MonoBehaviour
 
 	public void InstantiateHero()
 	{
+		int randomIndex = Random.Range(0, 2);
+
+		HeroController heroIPF = heroPF[randomIndex];
+
+
+
 		SoundManager.getInstance.PlaySpawnHeroSfx();
 		if (HeroPool.Count == 0)
 		{
 			SpawnVfx.Play();
-			HeroController newHero = Instantiate(heroPF, endTrans.position, Quaternion.identity, parent);
+			HeroController newHero = Instantiate(heroIPF, endTrans.position, Quaternion.identity, parent);
 			newHero.InitHero(endTrans.position);
 			HeroPool.Add(newHero);
 		}
@@ -79,7 +85,7 @@ public class HeroManager : MonoBehaviour
 		{
 			for (int i = 0; i < HeroPool.Count; i++)
 			{
-				if (!HeroPool[i].IsActive)
+				if (!HeroPool[i].IsActive && HeroPool[i].ID == heroIPF.ID)
 				{
 					SpawnVfx.Play();
 					HeroPool[i].InitHero(endTrans.position);
@@ -87,7 +93,7 @@ public class HeroManager : MonoBehaviour
 				}
 			}
 			SpawnVfx.Play();
-			HeroController newHero = Instantiate(heroPF, endTrans.position, Quaternion.identity, parent);
+			HeroController newHero = Instantiate(heroIPF, endTrans.position, Quaternion.identity, parent);
 			newHero.InitHero(endTrans.position);
 			HeroPool.Add(newHero);
 		}

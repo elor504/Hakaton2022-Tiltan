@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba42dc28b0b1ce64c9e574ea24940abd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
+  ID: 1
   Points: 70
   EnemyAnimator: {fileID: 1122848015631103442}
   _movementSpeed: 0.7
