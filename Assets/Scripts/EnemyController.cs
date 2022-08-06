@@ -91,7 +91,7 @@ public class EnemyController : MonoBehaviour
 	}
 	public void DeactivateEnemy()
 	{
-		GameManager.GetInstance.AddPoints(Points);
+		GameManager.GetInstance.AddPoints(Points, gameObject.transform.position);
 		SoundManager.getInstance.PlayDespawnMonsterSfx();
 		IsActive = false;
 		_portalPos.ActivateDespawnVFX();
