@@ -3162,7 +3162,7 @@ MonoBehaviour:
   IsHeroesBoosted: 0
   BoostTimer: 0.2
   MovementPercentage: 0.3
-  ResistancePercentage: 0.3
+  ResistancePercentage: 0.25
 --- !u!114 &775243520
 MonoBehaviour:
   m_ObjectHideFlags: 0
