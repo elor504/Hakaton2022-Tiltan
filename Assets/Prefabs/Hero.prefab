@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!1 &6958038396534030635
 GameObject:
   m_ObjectHideFlags: 0
@@ -131,6 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 209c6f3eed20316438aaeb1bb2cc5bd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ID: 0
   heroAnimation: {fileID: 5160858664816235927}
   EnemyMask:
     serializedVersion: 2
