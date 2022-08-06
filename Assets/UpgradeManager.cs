@@ -50,7 +50,7 @@ public class UpgradeManager : MonoBehaviour
 
 	public void UpgradeResistance()
 	{
-		if (ResistanceLevel == 10)
+		if (ResistanceLevel == 9)
 			return;
 
 		int currency = GameManager.GetInstance.Points;
@@ -76,7 +76,7 @@ public class UpgradeManager : MonoBehaviour
 
 	public void UpgradeMovement()
 	{
-		if (MovementSpeedLevel == 10)
+		if (MovementSpeedLevel == 9)
 			return;
 
 		Debug.Log("Cost: " + GetMovementCost());
@@ -97,12 +97,9 @@ public class UpgradeManager : MonoBehaviour
 	{
 		return GetCost(MovementSpeedLevel, MovementSpeedCost);
 	}
-
-
-
 	public void UpgradeMaxHeroes()
 	{
-		if (AmountOfHeroesLevel == 10)
+		if (AmountOfHeroesLevel == 9)
 			return;
 
 		Debug.Log("Cost: " + GetMaxHeroesCost());
@@ -113,17 +110,13 @@ public class UpgradeManager : MonoBehaviour
 			UIUpgrade.GetInstance.UpdateTexts();
 		}
 	}
-
 	public int GetMaxHeroesCost()
 	{
 		return GetCost(AmountOfHeroesLevel, AmountOfHeroesCost);
 	}
 
-
-
 	int GetCost(int level,List<int> baseCost)
 	{
 		return baseCost[level - 1];
 	}
-
 }

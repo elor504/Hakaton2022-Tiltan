@@ -3175,9 +3175,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42209646e44aaac45befe6b75b8984e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heroPF:
-  - {fileID: 6958038396534030634, guid: 8ea4b1ac17f17f048908e31f8cebc467, type: 3}
-  - {fileID: 6958038396534030634, guid: 4c4f48cbf56c90d48b525cb87efd5840, type: 3}
+  heroPF: {fileID: 6958038396534030634, guid: 8ea4b1ac17f17f048908e31f8cebc467, type: 3}
+  BigHeroPF: {fileID: 6958038396534030634, guid: 4c4f48cbf56c90d48b525cb87efd5840, type: 3}
   HeroPool: []
   parent: {fileID: 1495152096}
   endTrans: {fileID: 52232332}
