@@ -6,6 +6,8 @@ public class EnemyController : MonoBehaviour
 	public int ID;
 	public int Points;
 
+	public EnemyAnimator EnemyAnimator;
+
 	[SerializeField] float _movementSpeed;
 	[SerializeField] float _resistanceTolerance;
 
@@ -94,6 +96,16 @@ public class EnemyController : MonoBehaviour
 	}
 	public bool CheckIfNeedToBePushedBack()
 	{
+		if(GetCurrentResistance() == 0)
+		{
+			EnemyAnimator.SetAnimationBool("IsPushing", false);
+		}
+		else
+		{
+			EnemyAnimator.SetAnimationBool("IsPushing", true);
+		}
+
+
 		return GetCurrentResistance() >= _resistanceTolerance;
 	}
 

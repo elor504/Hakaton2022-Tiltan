@@ -9,6 +9,7 @@ public class StateEnemyGoTowardGoal : BaseState
 	private EnemyBrain _brain;
 	[SerializeField] List<Transform> _paths = new List<Transform>();
 
+
     public StateEnemyGoTowardGoal(EnemyController controller,EnemyBrain brain)
 	{
 		_controller = controller;
@@ -19,6 +20,7 @@ public class StateEnemyGoTowardGoal : BaseState
 	public override void EnterState()
 	{
 		_paths = PathManager.GetInstance.GetEnemyRandomizedPath(_controller.transform);
+		_controller.EnemyAnimator.SetAnimationBool("IsWalking", true);
 	}
 
 	public override void UpdateState()
@@ -43,6 +45,6 @@ public class StateEnemyGoTowardGoal : BaseState
 
 	public override void ExitState()
 	{
-		
+		_controller.EnemyAnimator.SetAnimationBool("IsWalking", false);
 	}
 }

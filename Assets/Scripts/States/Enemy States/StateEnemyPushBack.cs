@@ -18,6 +18,8 @@ public class StateEnemyPushBack : BaseState
 	public override void EnterState()
 	{
 		_portalPos = _controller.GetPortalPos;
+		_controller.EnemyAnimator.SetAnimationBool("IsPushing", false);
+		_controller.EnemyAnimator.SetAnimationBool("IsGettingPushed", true);
 	}
 
 	public override void UpdateState()
@@ -40,6 +42,6 @@ public class StateEnemyPushBack : BaseState
 
 	public override void ExitState()
 	{
-
+		_controller.EnemyAnimator.SetAnimationBool("IsGettingPushed", false);
 	}
 }

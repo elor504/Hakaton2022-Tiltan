@@ -93,13 +93,18 @@ public class EnemyManager : MonoBehaviour
 				}
 			}
 
-			float totalResistance = float.MaxValue;
-			for (int i = 0; i < canBeTargetedEnemies.Count; i++)
+			int CheckResistance = Random.Range(0, 1 + 1);
+
+			if (CheckResistance == 1)
 			{
-				if (canBeTargetedEnemies[i].GetTotalResistancePercentage() < totalResistance)
+				float totalResistance = float.MaxValue;
+				for (int i = 0; i < canBeTargetedEnemies.Count; i++)
 				{
-					totalResistance = canBeTargetedEnemies[i].GetTotalResistancePercentage();
-					closestEnemy = canBeTargetedEnemies[i];
+					if (canBeTargetedEnemies[i].GetTotalResistancePercentage() < totalResistance)
+					{
+						totalResistance = canBeTargetedEnemies[i].GetTotalResistancePercentage();
+						closestEnemy = canBeTargetedEnemies[i];
+					}
 				}
 			}
 
