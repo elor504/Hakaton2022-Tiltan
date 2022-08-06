@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine.EventSystems;
 using UnityEngine;
+using RDG;
 
 public class GameManager : MonoBehaviour
 {
@@ -40,7 +41,8 @@ public class GameManager : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0) && UIManager.getInstance.canVibrate == true && !EventSystem.current.IsPointerOverGameObject())
         {
-            Handheld.Vibrate();
+            // vibrating for 10 milliseconds with an amplitude of 50
+            Vibration.Vibrate(10, 50);
         }
         if(Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
         {
