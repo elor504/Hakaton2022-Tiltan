@@ -39,13 +39,40 @@ public class GameManager : MonoBehaviour
 
 	void Update()
     {
-        if(Input.GetMouseButtonDown(0) && UIManager.getInstance.canVibrate == true && !EventSystem.current.IsPointerOverGameObject(1))
+        if (IsHeroesBoosted)
         {
+            counter -= Time.deltaTime;
+            if (counter <= 0)
+            {
+                IsHeroesBoosted = false;
+            }
+        }
+
+        if (Input.GetMouseButtonDown(0) && UIManager.getInstance.canVibrate == true)
+        {
+            foreach (Touch touch in Input.touches)
+            {
+                int id = touch.fingerId;
+                if (EventSystem.current.IsPointerOverGameObject(id))
+                {
+                    return;
+                }
+            }
+
             // vibrating for 10 milliseconds with an amplitude of 50
             Vibration.Vibrate(10, 50);
         }
-        if(Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject(1))
+        if(Input.GetMouseButtonDown(0))
         {
+            foreach (Touch touch in Input.touches)
+            {
+                int id = touch.fingerId;
+                if (EventSystem.current.IsPointerOverGameObject(id))
+                {
+                    return;
+                }
+            }
+
             TapEffect();
             if (!IsHeroesBoosted)
             {
@@ -53,15 +80,6 @@ public class GameManager : MonoBehaviour
                 counter = BoostTimer;
             }
         }
-
-		if (IsHeroesBoosted)
-		{
-            counter -= Time.deltaTime;
-            if(counter <= 0)
-			{
-                IsHeroesBoosted = false;
-            }
-		}
     }
 
     
