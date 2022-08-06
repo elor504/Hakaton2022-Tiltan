@@ -38,7 +38,7 @@ public class UIManager : MonoBehaviour
         }
         else
         {
-            canvasScaler.matchWidthOrHeight = 0.5f;
+            canvasScaler.matchWidthOrHeight = 0f;
         }
     }
 
