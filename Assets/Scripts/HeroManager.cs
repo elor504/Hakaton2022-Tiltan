@@ -6,7 +6,8 @@ public class HeroManager : MonoBehaviour
 	private static HeroManager _instance;
 	public static HeroManager GetInstance => _instance;
 
-	public List<HeroController> heroPF;
+	public HeroController heroPF;
+	public HeroController BigHeroPF;
 	public List<HeroController> HeroPool = new List<HeroController>();
 	public Transform parent;
 	public Transform endTrans;
@@ -67,17 +68,27 @@ public class HeroManager : MonoBehaviour
 
 	public void InstantiateHero()
 	{
-		int randomIndex = Random.Range(0, 2);
+		int amountOfBigNeeded = UpgradeManager.GetInstance.AmountOfHeroesLevel - 1;
+		int amountOfBigActive = AmountOfBigHeroesActive();
 
-		HeroController heroIPF = heroPF[randomIndex];
+		HeroController pf = null;
 
+		if(amountOfBigNeeded != 0 && amountOfBigNeeded != amountOfBigActive)
+		{
+
+			pf = BigHeroPF;
+		}
+		else
+		{
+			pf = heroPF;
+		}
 
 
 		SoundManager.getInstance.PlaySpawnHeroSfx();
 		if (HeroPool.Count == 0)
 		{
 			SpawnVfx.Play();
-			HeroController newHero = Instantiate(heroIPF, endTrans.position, Quaternion.identity, parent);
+			HeroController newHero = Instantiate(pf, endTrans.position, Quaternion.identity, parent);
 			newHero.InitHero(endTrans.position);
 			HeroPool.Add(newHero);
 		}
@@ -85,7 +96,7 @@ public class HeroManager : MonoBehaviour
 		{
 			for (int i = 0; i < HeroPool.Count; i++)
 			{
-				if (!HeroPool[i].IsActive && HeroPool[i].ID == heroIPF.ID)
+				if (!HeroPool[i].IsActive && HeroPool[i].ID == pf.ID)
 				{
 					SpawnVfx.Play();
 					HeroPool[i].InitHero(endTrans.position);
@@ -93,7 +104,7 @@ public class HeroManager : MonoBehaviour
 				}
 			}
 			SpawnVfx.Play();
-			HeroController newHero = Instantiate(heroIPF, endTrans.position, Quaternion.identity, parent);
+			HeroController newHero = Instantiate(pf, endTrans.position, Quaternion.identity, parent);
 			newHero.InitHero(endTrans.position);
 			HeroPool.Add(newHero);
 		}
@@ -112,4 +123,20 @@ public class HeroManager : MonoBehaviour
 
 		return amount;
 	}
+
+	public int AmountOfBigHeroesActive()
+	{
+		int amount = 0;
+
+		for (int i = 0; i < HeroPool.Count; i++)
+		{
+			if(HeroPool[i].ID == BigHeroPF.ID)
+			{
+				amount++;
+			}
+		}
+
+		return amount;
+	}
+
 }
