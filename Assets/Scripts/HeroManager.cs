@@ -1,5 +1,5 @@
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class HeroManager : MonoBehaviour
 {
@@ -73,7 +73,7 @@ public class HeroManager : MonoBehaviour
 
 		HeroController pf = null;
 
-		if(amountOfBigNeeded != 0 && amountOfBigNeeded != amountOfBigActive)
+		if (amountOfBigNeeded != 0 && amountOfBigNeeded != amountOfBigActive)
 		{
 
 			pf = BigHeroPF;
@@ -130,9 +130,10 @@ public class HeroManager : MonoBehaviour
 
 		for (int i = 0; i < HeroPool.Count; i++)
 		{
-			if(HeroPool[i].ID == BigHeroPF.ID)
+			if (HeroPool[i].ID == BigHeroPF.ID)
 			{
-				amount++;
+				if (HeroPool[i].IsActive)
+					amount++;
 			}
 		}
 
