@@ -22,21 +22,28 @@ public class UIScore : MonoBehaviour
 	public void SetTextScore(int scoreAmount)
 	{
 		string type = "";
-		float amount = scoreAmount;
-		if (scoreAmount >= 1000 && scoreAmount < 1000000)
+		float amount = 0;
+
+		if(scoreAmount < 1000)
+		{
+			score.text = scoreAmount + type;
+		}
+		else if (scoreAmount >= 1000 && scoreAmount < 1000000)
 		{
 			type = "K";
-			amount = Mathf.Round((amount / 1000) * 10.0f) * 0.1f ;
+			amount = Mathf.FloorToInt(scoreAmount) * 0.001f;
+			score.text = amount.ToString("F1") + type;
 		}
 		else if (scoreAmount >= 1000000)
 		{
 			type = "M";
-			amount = Mathf.Round((amount / 1000000) * 10.0f) * 0.1f;
+			amount = Mathf.Round((scoreAmount / 1000000) * 10.0f) * 0.1f;
+			score.text = amount.ToString("F1") + type;
 		}
 
 
 
 
-		score.text = (amount + type).ToString();
+	
 	}
 }

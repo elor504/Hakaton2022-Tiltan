@@ -11,23 +11,26 @@ public class HeroController : MonoBehaviour
 	public Transform EnemyTrans;
 	public float MovementSpeed;
 	public float Resistance;
+	public int PointsOnPush;
 
 	float _movementSpeed()
 	{
 		if (GameManager.GetInstance.IsHeroesBoosted)
 		{
-			return MovementSpeed + (MovementSpeed * GameManager.GetInstance.MovementPercentage);
+			return MovementSpeed + (MovementSpeed * GameManager.GetInstance.MovementPercentage)
+				+ (MovementSpeed * UpgradeManager.GetInstance.GetMovementPercentage());
 		}
-		return MovementSpeed;
+		return MovementSpeed + (MovementSpeed * UpgradeManager.GetInstance.GetMovementPercentage());
 	}
 	public float GetMovementSpeed => _movementSpeed();
 	float _resistance()
 	{
 		if (GameManager.GetInstance.IsHeroesBoosted)
 		{
-			return Resistance + (Resistance * GameManager.GetInstance.ResistancePercentage);
+			return Resistance + (Resistance * GameManager.GetInstance.ResistancePercentage)
+				+ (Resistance * UpgradeManager.GetInstance.GetResistancePercentage());
 		}
-		return Resistance;
+		return Resistance + (Resistance * UpgradeManager.GetInstance.GetResistancePercentage());
 	}
 	public float GetResistance => _resistance();
 

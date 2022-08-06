@@ -6,6 +6,8 @@ public class EnemyController : MonoBehaviour
 	public int ID;
 	public int Points;
 
+	public EnemyAnimator EnemyAnimator;
+
 	[SerializeField] float _movementSpeed;
 	[SerializeField] float _resistanceTolerance;
 
@@ -33,6 +35,15 @@ public class EnemyController : MonoBehaviour
 		}
 		return currentResistance;
 	}
+
+	public float GetTotalResistancePercentage()
+	{
+		float per = 0;
+		per = Map(GetCurrentResistance(), 0, _resistanceTolerance, 0, 1);
+		return per;
+	}
+
+
 
 	private void Awake()
 	{
@@ -64,10 +75,18 @@ public class EnemyController : MonoBehaviour
 	{
 		dir = ((Vector2)_portalPos.transform.position - (Vector2)this.transform.position).normalized;
 		float percentage = Map(GetCurrentResistance(), 0, _resistanceTolerance, 0, 1);
+		float speed = 0;
+		if (percentage <= 1)
+		{
+			speed = _movementSpeed - (_movementSpeed / percentage);
+			speed = Mathf.Clamp(speed, 0, _movementSpeed);
+		}
+		else
+		{
+			speed = _movementSpeed + ((_movementSpeed * percentage) / 5);
+		}
 
-		float speed = _movementSpeed - (_movementSpeed / percentage);
-		speed = Mathf.Clamp(speed, 0, _movementSpeed);
-		//Debug.Log("Percentage: " + percentage + " movementSpeed: " + speed);
+
 		_rb.position += (dir * speed) * Time.deltaTime;
 	}
 	public void DeactivateEnemy()
@@ -86,6 +105,16 @@ public class EnemyController : MonoBehaviour
 	}
 	public bool CheckIfNeedToBePushedBack()
 	{
+		if(GetCurrentResistance() == 0)
+		{
+			EnemyAnimator.SetAnimationBool("IsPushing", false);
+		}
+		else
+		{
+			EnemyAnimator.SetAnimationBool("IsPushing", true);
+		}
+
+
 		return GetCurrentResistance() >= _resistanceTolerance;
 	}
 

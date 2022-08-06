@@ -21,6 +21,7 @@ public class HeroPushingState : BaseState
 	{
 		SoundManager.getInstance.PlayUnitsMeetSfx();
 		_animation.SetAnimatorBool(_animationName, true);
+		GameManager.GetInstance.AddPoints(_controller.PointsOnPush);
 	}
 
 	public override void UpdateState()
