@@ -75,9 +75,18 @@ public class EnemyController : MonoBehaviour
 	{
 		dir = ((Vector2)_portalPos.transform.position - (Vector2)this.transform.position).normalized;
 		float percentage = Map(GetCurrentResistance(), 0, _resistanceTolerance, 0, 1);
+		float speed = 0;
+		if (percentage <= 1)
+		{
+			speed = _movementSpeed - (_movementSpeed / percentage);
+			speed = Mathf.Clamp(speed, 0, _movementSpeed);
+		}
+		else
+		{
+			speed = _movementSpeed + ((_movementSpeed * percentage) / 5);
+		}
 
-		float speed = _movementSpeed - (_movementSpeed / percentage);
-		speed = Mathf.Clamp(speed, 0, _movementSpeed);
+
 		_rb.position += (dir * speed) * Time.deltaTime;
 	}
 	public void DeactivateEnemy()
