@@ -58,9 +58,14 @@ public class UpgradeManager : MonoBehaviour
 		Debug.Log("Cost: " + GetResistanceCost());
 		if(GameManager.GetInstance.HasEnoughPoints(GetResistanceCost()))
 		{
+			SoundManager.getInstance.PlayUpgradeSfx();
 			ResistanceLevel++;
 			GameManager.GetInstance.RemovePoints(GetResistanceCost());
 			UIUpgrade.GetInstance.UpdateTexts();
+		}
+        else
+        {
+			SoundManager.getInstance.PlayTapSfx();
 		}
 	}
 
@@ -82,9 +87,14 @@ public class UpgradeManager : MonoBehaviour
 		Debug.Log("Cost: " + GetMovementCost());
 		if(GameManager.GetInstance.HasEnoughPoints(GetMovementCost()))
 		{
+			SoundManager.getInstance.PlayUpgradeSfx();
 			MovementSpeedLevel++;
 			GameManager.GetInstance.RemovePoints(GetMovementCost());
 			UIUpgrade.GetInstance.UpdateTexts();
+		}
+        else
+        {
+			SoundManager.getInstance.PlayTapSfx();
 		}
 	}
 
@@ -105,9 +115,14 @@ public class UpgradeManager : MonoBehaviour
 		Debug.Log("Cost: " + GetMaxHeroesCost());
 		if (GameManager.GetInstance.HasEnoughPoints(GetMaxHeroesCost()))
 		{
+			SoundManager.getInstance.PlayUpgradeSfx();
 			AmountOfHeroesLevel++;
 			GameManager.GetInstance.RemovePoints(GetMaxHeroesCost());
 			UIUpgrade.GetInstance.UpdateTexts();
+		}
+        else
+        {
+			SoundManager.getInstance.PlayTapSfx();
 		}
 	}
 	public int GetMaxHeroesCost()
