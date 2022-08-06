@@ -24,7 +24,9 @@ public class GameManager : MonoBehaviour
     public float ResistancePercentage = 0.1f;
 
 
-	private void Awake()
+
+
+    private void Awake()
 	{
         if (_instance == null)
             _instance = this;
@@ -36,6 +38,10 @@ public class GameManager : MonoBehaviour
 
 	void Update()
     {
+        if(Input.GetMouseButtonDown(0) && UIManager.getInstance.canVibrate == true && !EventSystem.current.IsPointerOverGameObject())
+        {
+            Handheld.Vibrate();
+        }
         if(Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
         {
             TapEffect();
@@ -52,10 +58,8 @@ public class GameManager : MonoBehaviour
             if(counter <= 0)
 			{
                 IsHeroesBoosted = false;
-
             }
 		}
-
     }
 
     

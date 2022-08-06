@@ -4,10 +4,27 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     [SerializeField]GameObject settingsMenu;
-    [SerializeField] Image soundsMuteImg, musicMuteImg;
+    [SerializeField] Image soundsMuteImg, musicMuteImg, vibrImg;
     [SerializeField] CanvasScaler canvasScaler;
     bool isOpen;
-    bool muteSfx, muteMusic;
+    bool muteSfx, muteMusic, switchOffVibr;
+    public bool canVibrate = true;
+
+
+    private static UIManager _instance;
+    public static UIManager getInstance => _instance;
+    private void Awake()
+    {
+        if (_instance == null)
+        {
+            _instance = this;
+        }
+        else if (_instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
 
     private void Start()
     {
@@ -93,6 +110,22 @@ public class UIManager : MonoBehaviour
             musicMuteImg.enabled = false;
             muteMusic = false;
             SoundManager.getInstance.musicList[0].volume = 0.1f;
+        }
+    }
+    public void ChangeVibrationMode()
+    {
+        SoundManager.getInstance.PlayTapSfx();
+        if (switchOffVibr == false)
+        {
+            vibrImg.enabled = true;
+            switchOffVibr = true;
+            canVibrate = false;
+        }
+        else
+        {
+            vibrImg.enabled = false;
+            switchOffVibr = false;
+            canVibrate = true;
         }
     }
     #endregion
