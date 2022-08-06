@@ -8,9 +8,9 @@ public class PointsPopUpManager : MonoBehaviour
 	public static PointsPopUpManager GetInstance => _instance;
 
 
-	public GameObject PopUpPF;
+	public PopUpPoints PopUpPF;
 	public Transform Parent;
-	public List<GameObject> PopUpPool;
+	public List<PopUpPoints> PopUpPool = new List<PopUpPoints>();
 
 	private void Awake()
 	{
@@ -22,34 +22,30 @@ public class PointsPopUpManager : MonoBehaviour
 
 	public void InstantiatePopUp(Vector2 worldPosition,string pointsAmount)
 	{
-		return;
-
 
 		if(PopUpPool.Count == 0)
 		{
-			GameObject newPopUp = Instantiate(PopUpPF, worldPosition,Quaternion.identity, Parent);
-			//init
+			PopUpPoints newPopUp = Instantiate(PopUpPF, worldPosition,Quaternion.identity, Parent);
+			//init 
+			newPopUp.Init(pointsAmount, worldPosition);
 			PopUpPool.Add(newPopUp);
 		}
 		else
 		{
-
 			for (int i = 0; i < PopUpPool.Count; i++)
 			{
-				if (!PopUpPool[i].activeInHierarchy)
+				if (!PopUpPool[i].IsActive)
 				{
 					PopUpPool[i].transform.position = worldPosition;
-					//init
-					PopUpPool[i].SetActive(true);
+					PopUpPool[i].Init(pointsAmount, worldPosition);
+					//PopUpPool[i].gameObject.SetActive(true);
 					return;
 				}
 			}
 
-			GameObject newPopUp = Instantiate(PopUpPF, worldPosition, Quaternion.identity, Parent);
-			//init
+			PopUpPoints newPopUp = Instantiate(PopUpPF, worldPosition, Quaternion.identity, Parent);
+			newPopUp.Init(pointsAmount, worldPosition);
 			PopUpPool.Add(newPopUp);
-
-
 		}
 
 	}
